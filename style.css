@@ -1,0 +1,9 @@
+* {
+  box-sizing: border-box;
+}
+
+.btn {
+  align-items: center;
+  margin-top: 10px;
+  border-radius: 5px;
+}
