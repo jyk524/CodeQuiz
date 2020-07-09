@@ -1,83 +1,179 @@
-//Starting Data
+// Write JavaScript here //Starting Data
 //Set Variables
 var timerEl = document.querySelector(".timer");
 var startEl = document.querySelector("#start");
-var optionA = document.getElementById("optionA");
-var optionB = document.getElementById("optionB");
-var optionC = document.getElementById("optionC");
-var optionD = document.getElementById("optionD");
+var optionA = document.querySelector("#optionA");
+var optionB = document.querySelector("#optionB");
+var optionC = document.querySelector("#optionC");
+var optionD = document.querySelector("#optionD");
 //Array of Options
 var options = [optionA, optionB, optionC, optionD];
 var question = document.querySelector("#question");
-var secondsLeft = 10;
+var secondsLeft = 60;
 var score = 0;
+var buttons = document.querySelector(".button");
+
 //Array of Quesions for Quiz
 var quiz = [
   // question 1
   {
-    q1:
-      "Neurologists believe that the brain's medial ventral prefrontal cortex is activated when you do what?",
-    a1: "Have a panic attack",
-    a2: "Remember a name",
-    a3: "Get a joke",
-    a4: "Listen to music",
+    q0: "Which of these is not a Javascript Datatype?",
+    a0: "Boolean",
+    b0: "String",
+    c0: "Integer",
+    d0: "Java",
   },
   // question 2
   {
-    q2: "Which of these organs of the body is the largest?",
-    b1: "Brain",
-    b2: "Heart",
-    b3: "Liver",
-    b4: "Skin",
+    q1: "Which of these is a not a Javascript method?",
+    a1: "var",
+    b1: "Jiu-Jitsu",
+    c1: "while",
+    d1: "if",
   },
   // question 3
   {
-    q3: "How can we slow the spread of SARS-CoV-2?",
-    c1: "Wearing face masks properly",
-    c2: "Staying in enclosed areas with other people",
-    c3: "Give everyone free hugs",
-    c4: "Gathering for a birthday party",
+    q2: "Which was not a Javascript Homework?",
+    a2: "Create a pizza",
+    b2: "Create a password generator",
+    c2: "Create a profile website",
+    d2: "Create a quiz",
+  },
+  {
+    q3: "",
+    a3: "end quiz",
+    b3: score,
+    c3: "",
+    d3: "",
   },
 ];
-//Event Click first Function
-// var hOne = document.createElement("h1")
-// hOne.textContent = "This is the hOne element"
-// document.body.append(hOne)
-// hOne.setAttribute("style", "text-align:center")
-// var displayQuestions = function () {
-//   displayQuestions.value = ''
-//   optionA.innerHTML = quiz[a1];
-//   document.append(optionA);
-// };
 
-question.textContent = quiz[0]["q1"];
 
-optionA.value = "";
-optionA.innerHTML = quiz[0]["a1"];
-optionB.value = "";
-optionB.innerHTML = quiz[0]["a2"];
-optionC.value = "";
-optionC.innerHTML = quiz[0]["a3"];
-optionD.value = "";
-optionD.innerHTML = quiz[0]["a1"];
+function checkAnswerA() {
+  var questionData = quiz[questionNumber]["a" + questionNumber];
+  var correctAnswer = answers[questionNumber];
+  console.log("we are here!", questionData, correctAnswer);
+  if (questionData === correctAnswer) {
+    score++;
+    questionNumber++;
+    displayCorrectMessage();
+  } else {
+    secondsLeft -= 10;
+    questionNumber++;
+    displayWrongMessage();
+  }
+}
+function checkAnswerB() {
+  var questionData = quiz[questionNumber]["b" + questionNumber];
+  var correctAnswer = answers[questionNumber];
+  console.log("we are here!", questionData, correctAnswer);
+  if (questionData === correctAnswer) {
+    score++;
+    questionNumber++;
+    displayCorrectMessage();
+  } else {
+    secondsLeft -= 10;
+    questionNumber++;
+    displayWrongMessage();
+  }
+}
+function checkAnswerC() {
+  var questionData = quiz[questionNumber]["c" + questionNumber];
+  var correctAnswer = answers[questionNumber];
+  console.log("we are here!", questionData, correctAnswer);
+  if (questionData === correctAnswer) {
+    score++;
+    questionNumber++;
+    displayCorrectMessage();
+  } else {
+    secondsLeft -= 10;
+    questionNumber++;
+    displayWrongMessage();
+  }
+}
+function checkAnswerD() {
+  var questionData = quiz[questionNumber]["d" + questionNumber];
+  var correctAnswer = answers[questionNumber];
+  console.log("we are here!", questionData, correctAnswer);
+  if (questionData === correctAnswer) {
+    score++;
+    questionNumber++;
+    displayCorrectMessage();
+  } else {
+    secondsLeft -= 10;
+    questionNumber++;
+    displayWrongMessage();
+  }
+}
 
-// console.log(displayQuestions);
+optionA.addEventListener("click", checkAnswerA);
+optionB.addEventListener("click", checkAnswerB);
+optionC.addEventListener("click", checkAnswerC);
+optionD.addEventListener("click", checkAnswerD);
+
 
 //Array of Answers
-var answers = [];
+var questionNumber = 0;
+var answers = ["Java", "Jiu-Jitsu", "Create a pizza"];
+var clicks = 0;
 
 //User Interactions
 //When we click on Start, timer countdown starts
 startEl.addEventListener("click", function () {
   startEl.style.display = "none";
+  clicks++;
   var myInterval = setInterval(function () {
     timerEl.textContent = secondsLeft;
+    displayQuestion();
     secondsLeft--;
-    if (secondsLeft === -1) {
+    if (secondsLeft <= 0) {
       clearInterval(myInterval);
     }
   }, 1000);
 });
+
+function displayQuestion() {
+  question.textContent = quiz[questionNumber]["q" + questionNumber];
+  optionA.value = "";
+  optionA.innerHTML = quiz[questionNumber]["a" + questionNumber];
+  optionB.value = "";
+  optionB.innerHTML = quiz[questionNumber]["b" + questionNumber];
+  optionC.value = "";
+  optionC.innerHTML = quiz[questionNumber]["c" + questionNumber];
+  optionD.value = "";
+  optionD.innerHTML = quiz[questionNumber]["d" + questionNumber];
+}
+
+function displayCorrectMessage() {
+  results.textContent = "You were right! Here is your score: " + score;
+}
+function displayWrongMessage() {
+  results.textContent = "You were wrong! Here is your score: " + score;
+}
+
+// helper function
+
+// var pop = function populate() {
+// event.preventDefault();
+//for loop to help add text (the questions) into the buttons
+
+// buttonss.addEventListener("click", function () {
+//   var i = 0;
+//   i++;
+//   if (i < quiz.length) {
+//     // event.stopPropagation();
+//     question.textContent = quiz[i]["q" + `${i}`];
+//     optionA.value = "";
+//     optionA.innerHTML = quiz[i]["a" + `${i}`];
+//     optionB.value = "";
+//     optionB.innerHTML = quiz[i]["b" + `${i}`];
+//     optionC.value = "";
+//     optionC.innerHTML = quiz[i]["c" + `${i}`];
+//     optionD.value = "";
+//     optionD.innerHTML = quiz[i]["d" + `${i}`];
+//     console.log(i);
+//   }
+// });
 
 // After timer starts, first question is displayed - create a display question functions
 //call on some DOMS

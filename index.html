@@ -4,35 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quiz App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="index.html">Start Over</a>
+      </li>
+    </ul>
     <div class="container">
-      <h1 id="question">Question</h1>
+      <h1 id="banner">Quizzy</h1>
       <!-- start button  -->
-      <button type="button" id="start">START</button>
+      <button type="button" class="btn start" id="start">START</button>
       <!-- timer -->
       <span class="timer"></span>
     </div>
     <div class="container row" id="quiz">
-      <div class="column">
+      <row>
+      <div class="col-md-6">
         <div>
-          <p class="question">
-            <h2 id = "question"></h2>
-          </p>
-          <button type="button" class="btn" id="optionA">Answer 1</button>
+            <h2 id="question"></h2>
+          <button type="button" class="btn" id="optionA"></button>
           <br />
-          <button type="button" class="btn" id="optionB">Answer 2</button>
+          <button type="button" class="btn" id="optionB"></button>
           <br />
-          <button type="button" class="btn" id="optionC">Answer 3</button>
+          <button type="button" class="btn" id="optionC"></button>
           <br />
-          <button type="button" class="btn" id="optionD">Answer 4</button>
-          <!-- <input type="radio" /> <br />
-          <input type="radio" /> <br />
-          <input type="radio" /> <br /> -->
+          <button type="button" class="btn" id="optionD"></button>
         </div>
-        <button type="button" id="button"></button>
-        <div id="results"></div>
+        </row>
+        
+          <div id="results"></div>
+          
       </div>
     </div>
     <script src="script.js"></script>
