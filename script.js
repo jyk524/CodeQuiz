@@ -42,7 +42,7 @@ var quiz = [
   {
     q3: "",
     a3: "end quiz",
-    b3: score,
+    b3: "",
     c3: "",
     d3: "",
   },
