@@ -176,7 +176,6 @@ function displayWrongMessage() {
 
 // After timer starts, first question is displayed - create a display question functions
 //call on some DOMS
-//Handler Functions===============================================================================
 // Check answer - use answer array and .include
 //if it is correct
 //alert yay!
@@ -187,7 +186,6 @@ function displayWrongMessage() {
 // move to the next question
 //WHEN all questions are answered or the timer reaches 0
 //THEN the game is over
-//Display Input===============================================================================
 //WHEN the game is over
 //Clear screen
 //Reset Timer
