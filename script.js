@@ -1,19 +1,19 @@
 // Write JavaScript here //Starting Data
 //Set Variables
+//These variables direct to specific ID's in the HTML
 var timerEl = document.querySelector(".timer");
 var startEl = document.querySelector("#start");
 var optionA = document.querySelector("#optionA");
 var optionB = document.querySelector("#optionB");
 var optionC = document.querySelector("#optionC");
-var optionD = document.querySelector("#optionD");
-//Array of Options
-var options = [optionA, optionB, optionC, optionD];
+var optionD = document.querySelector("#optionD");;
 var question = document.querySelector("#question");
-var secondsLeft = 60;
+var secondsLeft = 180;
 var score = 0;
 var buttons = document.querySelector(".button");
 
 //Array of Quesions for Quiz
+// set as an array of objects
 var quiz = [
   // question 1
   {
@@ -48,7 +48,7 @@ var quiz = [
   },
 ];
 
-
+//these check answer functions will check to see if the button clicked is the correct answer
 function checkAnswerA() {
   var questionData = quiz[questionNumber]["a" + questionNumber];
   var correctAnswer = answers[questionNumber];
@@ -106,19 +106,20 @@ function checkAnswerD() {
   }
 }
 
+// these functions will trigger when one of the multiple choice questions are chosen
 optionA.addEventListener("click", checkAnswerA);
 optionB.addEventListener("click", checkAnswerB);
 optionC.addEventListener("click", checkAnswerC);
 optionD.addEventListener("click", checkAnswerD);
 
 
-//Array of Answers
+//Array of Answers used to check correct answers
 var questionNumber = 0;
 var answers = ["Java", "Jiu-Jitsu", "Create a pizza"];
 var clicks = 0;
 
 //User Interactions
-//When we click on Start, timer countdown starts
+//When we click on Start, timer countdown starts, when the quiz ends or timer reaches zero the test is over
 startEl.addEventListener("click", function () {
   startEl.style.display = "none";
   clicks++;
@@ -132,6 +133,7 @@ startEl.addEventListener("click", function () {
   }, 1000);
 });
 
+//these functions use the buttons and header in the html to populate the questions and the answers
 function displayQuestion() {
   question.textContent = quiz[questionNumber]["q" + questionNumber];
   optionA.value = "";
@@ -143,7 +145,7 @@ function displayQuestion() {
   optionD.value = "";
   optionD.innerHTML = quiz[questionNumber]["d" + questionNumber];
 }
-
+// gives feedback to the user on their choice
 function displayCorrectMessage() {
   results.textContent = "You were right! Here is your score: " + score;
 }
@@ -153,11 +155,8 @@ function displayWrongMessage() {
 
 // helper function
 
-// var pop = function populate() {
-// event.preventDefault();
-//for loop to help add text (the questions) into the buttons
-
-// buttonss.addEventListener("click", function () {
+//testing a for loop but didn't work
+// buttons.addEventListener("click", function () {
 //   var i = 0;
 //   i++;
 //   if (i < quiz.length) {
